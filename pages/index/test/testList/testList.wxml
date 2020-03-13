@@ -1,0 +1,34 @@
+<view class="main">
+  <view class="title">{{homeworkTitle}}</view>
+  <view class="testInfo">
+    <view class="item" wx:for="{{homeList}}" wx:key="{{item.id}}">
+      <view class="topic">{{index+1}}. {{item.titleName}}</view>
+      <view class="fill">
+        <view class="choice" wx:if="{{item.titleType=='选择题'}}">
+          <radio-group bindchange="getChoAnswer" data-index="{{index}}" data-answer="{{item.titleAnswer}}">
+            <radio class="" value="A" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
+            <radio class="" value="B" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
+            <radio class="" value="C" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
+            <radio class="" value="D" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
+          </radio-group>
+        </view>
+        <view class="judge" wx:if="{{item.titleType=='判断题'}}">
+          <radio-group bindchange="getJudAnswer" data-index="{{index}}" data-answer="{{item.titleAnswer}}">
+            <radio class="" value="1" color="#0599df">对</radio>
+            <radio class="" value="0" color="#0599df">错</radio>
+          </radio-group>
+        </view>
+        <view class="essay" wx:if="{{item.titleType=='简答题'}}">
+          <textarea class="" data-answer="{{item.titleAnswer}}" bindinput="getEssAnswer" data-index="{{index}}" placeholder="" placeholder-style="" placeholder-class="textarea-placeholder" maxlength="140"></textarea>
+        </view>
+        <view class="essay" wx:if="{{item.titleType=='填空题'}}">
+          <input class="" data-answer="{{item.titleAnswer}}" bindinput="getFillAnswer" data-index="{{index}}" maxlength="140"></input>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class="submit">
+    <button bind:tap="submit">提交测试</button>
+  </view>
+</view>

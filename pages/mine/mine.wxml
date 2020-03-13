@@ -1,0 +1,54 @@
+<view class="main">
+    <navigator class="" target="" url="/pages/mine/reviseInfo/reviseInfo" hover-class="navigator-hover" open-type="navigate">
+        <view class="person">
+            <view class="avator">
+                <image class="avator" src="{{user.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+            <view class="info">
+                <text class="name" selectable="false" space="false" decode="false">{{studentName}}</text>
+                <text class="id" selectable="false" space="false" decode="false">
+                    学号: {{studentNum}}
+                </text>
+            </view>
+            <view style="float:right;margin-top:85rpx;margin-right:36rpx;">
+                <image class="" src="/images/right.png" style="width:30rpx;height:30rpx;vertical-align: middle;" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </view>
+    </navigator>
+    <view class="container1">
+        <!-- <navigator class="" target="" url="/pages/index/selection/selection" hover-class="navigator-hover" open-type="navigate">
+            <view class="cell border">
+                我的课程
+                <image class="" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </navigator> -->
+        <navigator class="" target="" url="/pages/mine/grade/grade" hover-class="navigator-hover" open-type="navigate">
+            <view class="cell border">
+                我的成绩
+                <image class="" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </navigator>
+        <navigator class="" target="" url="/pages/mine/sign/sign" hover-class="navigator-hover" open-type="navigate">
+            <view class="cell border">
+                我的签到情况
+                
+                <image class="" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </navigator>
+        <navigator class="" target="" url="/pages/mine/homework/homework" hover-class="navigator-hover" open-type="navigate">
+            <view class="cell border">
+                我的课后作业情况
+                <image class="" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </navigator>
+        <navigator class="" target="" url="/pages/mine/test/test" hover-class="navigator-hover" open-type="navigate">
+            <view class="cell">
+                我的课堂测试情况
+                <image class="" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </navigator>
+    </view>
+    <view class="container2">
+        
+    </view>
+</view>

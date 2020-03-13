@@ -1,0 +1,41 @@
+<!-- pages/index/selection/selection.wxml -->
+<view class="main">
+  <view class="tab">
+    <view class="searchArea">
+      <!-- <input placeholder="请输入课程名" bindinput="searchCourseName" bindconfirm="search"></input>
+      <icon type="search" bindtap="search"></icon> -->
+      当前可选课程列表
+    </view>
+  </view>
+  <view class="courseList">
+    <view class="optionalList">
+      <view class="item" wx:for="{{courseList}}" wx:key="{{item.courseId}}">
+        <view class="info">
+          <text class="coursename" selectable="false" space="false" decode="false">{{item.courseName}}</text>
+          <text class="courseintro" selectable="false" space="false" decode="false">
+            {{item.courseIntro}}
+          </text>
+        </view>
+        <view class="opt">
+          <button class="add" wx:if="{{!item.selected}}" bind:tap="selectedCourse" data-courseid="{{item.courseId}}" data-index='{{index}}'>
+            <image class="" src="/images/add.png" mode="aspectFit|aspectFill|widthFix"></image>
+            选课
+          </button>
+          <button class="yes" wx:if="{{item.selected}}">
+            <image class="" src="/images/yes.png" mode="aspectFit|aspectFill|widthFix"></image>
+            已选
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <i-modal title="提交信息" visible="{{ visible }}" actions="{{ actions }}" bind:click="handleClick">
+    <view class="submit_box">
+      <input placeholder="请输入你的姓名" wx:if="{{first_flag==='true'}}" bindinput="getStudentName" maxlength="4"></input>
+      <input placeholder="请输入你的学号" wx:if="{{first_flag==='true'}}" bindinput="getStudentNum" maxlength="10" type="number"></input>
+      <input placeholder="请输入邀请码" bindinput="getStudentCode" maxlength="10"></input>
+    </view>
+  </i-modal>
+  <i-toast id="toast" />
+</view>

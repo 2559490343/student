@@ -1,0 +1,21 @@
+<!-- pages/mine/test/test.wxml -->
+<view class="title">测试情况统计</view>
+<view class="cell" wx:for="{{testInfoList}}" wx:key="item.courseId">
+  {{item.courseName}}:
+  <text class="" selectable="false" space="false" decode="false">上交：{{item.summit||0}}份 未交：{{item.total-(item.summit||0)}}份</text>
+</view>
+<!-- <view class="cell">
+    Java程序开发:
+    <text class="" selectable="false" space="false" decode="false">已测试：10次 未测试：2次</text>
+</view>
+<view class="cell">
+    C++程序设计:
+    <text class="" selectable="false" space="false" decode="false">已测试：10次 未测试：2次</text>
+</view>
+<view class="cell">
+    数据结构:
+    <text class="" selectable="false" space="false" decode="false">已测试：10次 未测试：2次</text>
+</view>
+<view class="detail">
+    <button bind:tap="goDetail">查看详情</button>
+</view> -->

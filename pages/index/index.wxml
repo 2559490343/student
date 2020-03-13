@@ -1,0 +1,77 @@
+<!-- index.wxml -->
+<view class="main">
+  <view class="change_course">
+    <view class="change_area">
+      <text bindtap="showChange">当前课程: {{courseName||'待切换'}}
+      </text>
+      <!-- <button bindtap="login1">111</button>
+      <button bindtap="login2">222</button> -->
+      <i-icon type="play_fill" size="16" bindtap="showChange" class="icon {{flag?'down':''}}" color="#ffffff" />
+    </view>
+    <view class="change_list {{flag?'show':''}}">
+      <view wx:if='{{change_course_list.length>0}}'>
+        <view class="change_item" wx:for='{{change_course_list}}' wx:key='item.id' bindtap="handleChange" data-index="{{index}}">
+          <text>{{item.courseName}} </text>
+          <icon type="success_no_circle" color="#0599df" wx:if="{{index==change_index}}"></icon>
+        </view>
+      </view>
+      <view wx:else>暂无课程</view>
+      <view class="change_btns">
+        <view class="btn" bindtap="handleCancelChange">取消</view>
+        <view class="btn" bindtap="handleChangeCourse">确定</view>
+      </view>
+    </view>
+
+  </view>
+  <view class="main_box">
+    <view class="selection box">
+      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/selection/selection" data-index='1'>
+        <view class="sign_txt">
+          <text selectable="false" space="false" decode="false">选课操作</text>
+        </view>
+        <view class="sign_logo">
+          <image src="/images/selection.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+    <view class="sign box">
+      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/sign/sign">
+        <view class="sign_txt">
+          <text selectable="false" space="false" decode="false">课程签到</text>
+        </view>
+        <view class="sign_logo">
+          <image src="/images/sign.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+    <view class="test box">
+      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/test/test">
+        <view class="sign_txt">
+          <text selectable="false" space="false" decode="false">课堂测试</text>
+        </view>
+        <view class="sign_logo">
+          <image src="/images/test.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+    <view class="homework box">
+      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/homework/homework">
+        <view class="sign_txt">
+          <text selectable="false" space="false" decode="false">课后作业</text>
+        </view>
+        <view class="sign_logo">
+          <image src="/images/homework.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class="mask" wx:if='{{flag}}'></view>
+</view>
+<i-toast id="toast" />
+<i-modal title="提示" visible="{{ visible }}" show-cancel='{{false}}' actions="{{ actions }}" bind:ok="hideDialog">
+  <view>请选择当前课程！</view>
+</i-modal>
+<i-modal title="您是否已有老师的课程？" visible="{{ first_flag }}" actions="{{action}}" bind:click='handleClick'>
+  <view>如果已有课程，请登录；否则请选课</view>
+</i-modal>

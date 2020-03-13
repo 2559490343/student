@@ -1,0 +1,24 @@
+/* pages/mine/grade/grade.wxss */
+.title{
+    background-color: #fff;
+    width: 100%;
+    height: 120rpx;
+    font-size: 40rpx;
+    color: #0599df;
+    text-align: center;
+    line-height: 120rpx;
+}
+
+.cell{
+    margin: 30rpx 0;
+    background-color: #fff;
+    height: 120rpx;
+    /* line-height: 120rpx; */
+    padding: 18rpx 20rpx;
+    font-size: 32rpx;
+}
+
+.cell text{
+    margin-top: 10rpx;
+    display: block;
+}

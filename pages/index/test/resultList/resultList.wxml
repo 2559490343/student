@@ -1,0 +1,55 @@
+<!--pages/index/homework/resultList/resultList.wxml-->
+<view class="main">
+  <view class="title">答题解析</view>
+  <view class="testInfo">
+    <view class="item" wx:for="{{homeList}}" wx:key="{{item.id}}">
+      <view class="topic">{{index+1}}. {{item.titleName}}</view>
+      <view class="fill">
+        <view class="choice" wx:if="{{item.titleType=='选择题'}}">
+          <radio-group bindchange="getChoAnswer" data-index="{{index}}">
+            <radio disabled class="" value="A" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
+            <radio disabled class="" value="B" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
+            <radio disabled class="" value="C" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
+            <radio disabled class="" value="D" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
+          </radio-group>
+          <view class="rightAnswer">
+            正确答案：{{item.titleAnswer}} (
+            <text class="right" wx:if="{{item.titleTrue=='true'}}">回答正确</text>
+            <text wx:else class="error">回答错误</text>)
+          </view>
+        </view>
+        <view class="judge" wx:if="{{item.titleType=='判断题'}}">
+          <radio-group bindchange="getJudAnswer" data-index="{{index}}">
+            <radio class="" disabled value="1" color="#0599df" checked="{{item.answer=='1'}}">对</radio>
+            <radio class="" disabled value="0" color="#0599df" checked="{{item.answer=='0'}}">错</radio>
+          </radio-group>
+          <view class="rightAnswer">
+            正确答案：{{item.titleAnswer=='1'?"对":"错"}} (
+            <text class="right" wx:if="{{item.titleTrue=='true'}}">回答正确</text>
+            <text wx:else class="error">回答错误</text>)
+          </view>
+        </view>
+        <view class="essay" wx:if="{{item.titleType=='简答题'}}">
+          <textarea class="" disabled value="{{item.answer}}" bindinput="getEssAnswer" data-index="{{index}}" maxlength="140"></textarea>
+          <view class="rightAnswer">
+            <view wx:if="{{item.titleTrue}}">
+              (
+              <text class="right" wx:if="{{item.titleTrue=='true'}}">回答正确</text>
+              <text wx:else class="error">回答错误</text>)</view>
+               <view wx:else><text style="color:#00FF7F">(待批改)</text></view>
+          </view>
+         
+        </view>
+        <view class="completion" wx:if="{{item.titleType=='填空题'}}">
+          <input disabled value="{{item.answer}}"></input>
+          <view class="rightAnswer">
+            正确答案：{{item.titleAnswer}} (
+            <text class="right" wx:if="{{item.titleTrue=='true'}}">回答正确</text>
+            <text wx:else class="error">回答错误</text>)
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/selection/selection",
+    "pages/index/sign/sign",
+    "pages/index/test/test",
+    "pages/index/homework/homework",
+    "pages/mine/mine",
+    "pages/index/test/testList/testList",
+    "pages/index/homework/homeList/homeList",
+    "pages/mine/reviseInfo/reviseInfo",
+    "pages/mine/grade/grade",
+    "pages/mine/sign/sign",
+    "pages/mine/homework/homework",
+    "pages/mine/test/test",
+    "pages/index/homework/resultList/resultList",
+    "pages/index/test/resultList/resultList",
+    "pages/auth/auth",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0599df",
+    "navigationBarTitleText": "课堂辅助小助手",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#EBEBEB"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#0599df",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_press.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_press.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

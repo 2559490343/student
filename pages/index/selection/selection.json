@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-modal": "../../dist/modal/index",
+    "i-toast": "../../dist/toast/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "选课操作"
+}

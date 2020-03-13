@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-modal": "../../dist/modal/index",
+    "i-toast": "../../dist/toast/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "课程签到"
+}

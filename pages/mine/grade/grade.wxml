@@ -1,0 +1,14 @@
+<!-- pages/mine/grade/grade.wxml -->
+<view class="title">课程成绩列表</view>
+<view class="cell" wx:for="{{gradeInfoList}}" wx:key="{{item.courseName}}">
+    {{item.courseName}}:
+    <text class="" selectable="false" space="false" decode="false">平时成绩: {{item.regularGrade?item.regularGrade+'分':'暂无'}} 考试成绩: {{item.examGrade?item.examGrade+'分':'暂无'}} 最终成绩: {{item.finalGrade?item.finalGrade+'分':'暂无'}}</text>
+</view>
+<!-- <view class="cell">
+    C++程序设计:
+    <text class="" selectable="false" space="false" decode="false">平时成绩 80分 考试成绩 80分 最终成绩 80分</text>
+</view>
+<view class="cell">
+    数据结构:
+    <text class="" selectable="false" space="false" decode="false">平时成绩 80分 考试成绩 80分 最终成绩 80分</text>
+</view> -->

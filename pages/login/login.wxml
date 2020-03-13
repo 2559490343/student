@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class="main">
+  <view class="title">登录绑定</view>
+  <view class="box">
+    <view class="cell name">
+      <view class="input">
+        <input class="" value="{{studentName}}" type="text" placeholder="请输入你的名字" maxlength="4" bindinput="getName"></input>
+      </view>
+    </view>
+    <view class="cell num">
+      <view class="input">
+        <input class="" value="{{studentNum}}" type="number" placeholder="请输入你的学号" maxlength="10" bindinput="getId"></input>
+      </view>
+    </view>
+
+    <button bindtap="login">登录</button>
+
+  </view>
+  <i-toast id="toast" />
+</view>

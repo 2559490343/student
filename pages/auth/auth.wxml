@@ -1,0 +1,12 @@
+<!--pages/auth/auth.wxml-->
+<view class="main">
+
+
+  <view class="box">
+    <image src="../../images/logo.jpg"></image>
+    <view class="tips">你需要授权登录才能使用</view>
+    <button open-type="getUserInfo" bindgetuserinfo="login">立即授权</button>
+  </view>
+
+
+</view>

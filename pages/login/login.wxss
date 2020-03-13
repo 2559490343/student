@@ -1,0 +1,43 @@
+page {
+  background: #fff;
+}
+
+.main {
+  padding-top: 30rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  color: #0599df;
+  text-align: center;
+}
+
+.box {
+  padding-top: 60rpx;
+}
+
+input {
+  box-sizing: border-box;
+  border: 2rpx solid #0599df;
+  width: 90%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  padding-left: 20rpx;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+  text-align: center;
+  font-size: 36rpx;
+}
+
+button {
+  box-sizing: border-box;
+  background: #0599df;
+  width: 90%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  padding-left: 20rpx;
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+}

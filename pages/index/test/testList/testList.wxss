@@ -1,0 +1,76 @@
+/* pages/index/test/testList/testList.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.title {
+  width: 100%;
+  height: 120rpx;
+  background-color: #fff;
+  text-align: center;
+  line-height: 120rpx;
+  color: #0599df;
+  font-weight: 600;
+  font-size: 36rpx;
+}
+
+.testInfo {
+  padding-top: 20rpx;
+}
+
+.item {
+  padding: 16rpx 20rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.topic {
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+}
+
+.fill {
+  font-size: 32rpx;
+  color: #333;
+}
+
+radio {
+  display: block;
+  margin: 10rpx 0;
+}
+
+textarea {
+  border: 1px solid #ccc;
+  width: 95%;
+  height: 200rpx;
+  padding: 20rpx;
+  /* margin-top: 20rpx; */
+}
+
+input {
+  border: 1px solid #ccc;
+  width: 95%;
+  height: 80rpx;
+  padding-left: 20rpx;
+}
+
+button {
+  background-color: #0599df;
+  color: #fff;
+  margin-bottom: 10rpx;
+  width: 96%;
+}
+
+.submit {
+  height: 360rpx;
+  margin-top: 40rpx;
+}
+
+.submit text {
+  display: block;
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}

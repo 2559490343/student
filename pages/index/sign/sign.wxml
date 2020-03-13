@@ -1,0 +1,100 @@
+<!-- pages/index/sign/sign.wxml -->
+<view class="main">
+  <view class="tab">
+    <view class="now {{tabIndex==0?'active':''}}" bind:tap="changeTab" data-index='0'>
+      进行中的签到
+    </view>
+    <view class="his {{tabIndex==1?'active':''}}" bind:tap="changeTab" data-index='1'>
+      历史签到记录
+    </view>
+  </view>
+  <view class="signList">
+    <view class="nowList" hidden="{{tabIndex!=0}}">
+      <view class="item" wx:if="{{ingList.sign.code}}">
+        <view class="info">
+          <view class="info_left">
+            <text class="title" selectable="false" space="false" decode="false">
+                            {{ingList.sign.signTitle}}
+                        </text>
+            <view class="ing">
+              <image class="" src="/images/dot2.png" mode="aspectFit|aspectFill|widthFix"></image>
+              <text class="ing_txt" selectable="false" space="false" decode="false">
+                                进行中
+                            </text>
+            </view>
+          </view>
+          <view class="info_right">
+            <text class="courseName" selectable="false" space="false" decode="false">
+                            {{courseName}}
+                        </text>
+            <text class="time" selectable="false" space="false" decode="false">
+                            {{ingList.sign.createTime}}
+                        </text>
+          </view>
+        </view>
+        <view class="opt">
+          <button class="add" hidden="{{ingList.studentStatus}}" bind:tap="showSignModal" data-index='{{index}}'>
+            <image class="" src="/images/sign_logo.png" mode="aspectFit|aspectFill|widthFix"></image>
+            签到
+          </button>
+          <button class="yes" hidden="{{!ingList.studentStatus}}" data-index='{{index}}'>
+            <image class="" src="/images/yes.png" mode="aspectFit|aspectFill|widthFix"></image>
+            已签到
+          </button>
+        </view>
+      </view>
+      <view class="noData" wx:else>暂无数据</view>
+    </view>
+    <view class="hisList" hidden="{{tabIndex!=1}}">
+      <view class="item" wx:for="{{hisList}}" wx:key="{{item.signId}}">
+        <view class="info">
+          <view class="info_left">
+            <text class="title" selectable="false" space="false" decode="false">
+                            {{item.sign.signTitle}}
+                        </text>
+            <view class="ing" wx:if="{{item.sign.code}}">
+              <image class="" src="/images/dot2.png" mode="aspectFit|aspectFill|widthFix"></image>
+              <text class="ing_txt" selectable="false" space="false" decode="false">
+                                进行中
+                            </text>
+            </view>
+            <view class="ing" wx:else>
+              <image class="" src="/images/dot1.png" mode="aspectFit|aspectFill|widthFix"></image>
+              <text class="over_txt" selectable="false" space="false" decode="false">
+                                已过期
+                            </text>
+            </view>
+          </view>
+          <view class="info_right">
+            <text class="courseName" selectable="false" space="false" decode="false">
+                            {{courseName}}
+                        </text>
+            <text class="time" selectable="false" space="false" decode="false">
+                            {{item.sign.createTime}}
+                        </text>
+          </view>
+        </view>
+        <view class="opt">
+          <button class="add" wx:if="{{item.sign.code&&!item.studentStatus}}" bind:tap="sign" data-sign="{{true}}" data-index='{{index}}'>
+            <image class="" src="/images/sign_logo.png" mode="aspectFit|aspectFill|widthFix"></image>
+            签到
+          </button>
+          <button class="yes" hidden="{{!item.studentStatus}}" data-index='{{index}}'>
+            <image class="" src="/images/yes.png" mode="aspectFit|aspectFill|widthFix"></image>
+            已签到
+          </button>
+          <button class="no" wx:if="{{!item.studentStatus&&!item.sign.code}}" data-index='{{index}}'>
+            <!-- <image class="" src="/images/yes.png" mode="aspectFit|aspectFill|widthFix"></image> -->
+            未签到
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <i-modal title="提交验证码" visible="{{ visible }}" actions="{{ actions }}" bind:click="handleClick">
+    <view class="submit_box">
+      <input placeholder="请输入验证码" bindinput="getSignCode" maxlength="10"></input>
+    </view>
+  </i-modal>
+  <i-toast id="toast" />
+</view>

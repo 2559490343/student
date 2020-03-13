@@ -1,0 +1,37 @@
+/* pages/auth/auth.wxss */
+page{
+  height: 100%;
+}
+.main {
+  padding: 0 20rpx;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.box{
+  height: 100%;
+  transform: translateY(20%);
+}
+image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.tips {
+  color: #999;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 50rpx;
+}
+
+button {
+  background-color: #0599df;
+  border-radius: 16rpx;
+  color: #fff;
+  width: 100%;
+}

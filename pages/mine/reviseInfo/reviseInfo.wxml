@@ -1,0 +1,27 @@
+<!-- pages/mine/reviseInfo/reviseInfo.wxml -->
+<view class="avatar" bind:tap='getAvatar'>
+    <view class="left">头像</view>
+    <view class="right">
+        <image class="avatar_pic" src="{{user.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <image class="right_pic" src="/images/right.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+</view>
+<view class="cell name">
+    <view class="title">姓名:</view>
+    <view class="input">
+        <input class="" value="{{user.name}}" type="text" placeholder="请输入你的名字" maxlength="140" bindinput="getName" bindfocus="" bindblur="" bindconfirm=""></input>
+    </view>
+</view>
+<view class="cell num">
+    <view class="title">学号:</view>
+    <view class="input">
+        <input class="" value="{{user.num}}" type="text" placeholder="请输入你的学号" maxlength="140" bindinput="getNum" bindfocus="" bindblur="" bindconfirm=""></input>
+    </view>
+</view>
+
+<view class="keep">
+    <button bind:tap="keep">保存</button>
+</view>
+<view class="cancel">
+    <button bind:tap="cancel">取消</button>
+</view>

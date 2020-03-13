@@ -1,0 +1,85 @@
+<!-- pages/index/homework/homework.wxml -->
+<view class="main">
+  <view class="tab">
+    <view class="notsubmit {{tabIndex==0?'active':''}}" bind:tap="changeTab" data-index='0'>
+      未提交的测试
+    </view>
+    <view class="submited {{tabIndex==1?'active':''}}" bind:tap="changeTab" data-index='1'>
+      已提交的测试
+    </view>
+  </view>
+  <view class="signList">
+    <view class="notList" hidden="{{tabIndex!=0}}">
+      <view class="item" wx:for="{{ingList}}" wx:key="{{item.homeworkId}}">
+        <view class="info">
+          <view class="info_left">
+            <text class="title" selectable="false" space="false" decode="false">
+                           {{item.homeworkTitle}}
+                        </text>
+            <view class="ing" hidden="{{!true}}">
+              <image class="" src="/images/dot2.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+              <text class="ing_txt" selectable="false" space="false" decode="false">
+                                未提交
+                            </text>
+            </view>
+            <!-- <view class="over" hidden="{{true}}">
+              <image class="" src="/images/dot1.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+              <text class="over_txt" selectable="false" space="false" decode="false">
+                                已提交
+                            </text>
+            </view> -->
+          </view>
+          <view class="info_right">
+            <text class="courseName" selectable="false" space="false" decode="false">
+                           {{courseName}}
+                        </text>
+            <text class="finish">
+                           共 {{item.homeworkCount}} 题
+                        </text>
+          </view>
+        </view>
+        <view class="opt">
+          <button class="add" hidden="{{false}}" bind:tap="answer" data-id='{{item.homeworkId}}'>
+            <image class="" src="/images/sign_logo.png" mode="aspectFit|aspectFill|widthFix"></image>
+            答题
+          </button>
+          <button class="yes" hidden="{{!false}}">
+            <image class="" src="/images/yes.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            已提交
+          </button>
+        </view>
+      </view>
+    </view>
+    <view class="subList" hidden="{{tabIndex!=1}}">
+      <view class="item" wx:for="{{subList}}" wx:key="{{item.homeworkId}}">
+        <view class="info">
+          <view class="info_left">
+            <text class="title" selectable="false" space="false" decode="false">
+                          {{item.homeworkTitle}}
+                        </text>
+            <view class="over" hidden="{{false}}">
+              <image class="" src="/images/dot1.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+              <text class="over_txt" selectable="false" space="false" decode="false">
+                                已提交
+                            </text>
+            </view>
+          </view>
+          <view class="info_right">
+            <text class="courseName" selectable="false" space="false" decode="false">
+                        {{courseName}}
+                        </text>
+            <text class="finish">
+                           共 {{item.homeworkCount}} 题
+                        </text>
+          </view>
+        </view>
+        <view class="opt">
+          <button class="result" bind:tap="showResult" data-id='{{item.homeworkId}}'>
+            查看结果
+          </button>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
