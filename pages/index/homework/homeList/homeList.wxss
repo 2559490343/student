@@ -64,7 +64,7 @@ button {
 
 .submit {
   height: 360rpx;
-  margin-top: -40rpx;
+  margin-top: 40rpx;
 }
 
 .submit text {

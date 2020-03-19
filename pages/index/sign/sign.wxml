@@ -75,7 +75,7 @@
           </view>
         </view>
         <view class="opt">
-          <button class="add" wx:if="{{item.sign.code&&!item.studentStatus}}" bind:tap="sign" data-sign="{{true}}" data-index='{{index}}'>
+          <button class="add" wx:if="{{item.sign.code&&!item.studentStatus}}" bind:tap="showSignModal1" data-index='{{index}}'>
             <image class="" src="/images/sign_logo.png" mode="aspectFit|aspectFill|widthFix"></image>
             签到
           </button>

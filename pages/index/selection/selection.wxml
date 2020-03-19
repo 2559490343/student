@@ -11,7 +11,7 @@
     <view class="optionalList">
       <view class="item" wx:for="{{courseList}}" wx:key="{{item.courseId}}">
         <view class="info">
-          <text class="coursename" selectable="false" space="false" decode="false">{{item.courseName}}</text>
+          <text class="coursename" selectable="false" space="false" decode="false">{{item.courseName}}({{item.teacher.teacherName}})</text>
           <text class="courseintro" selectable="false" space="false" decode="false">
             {{item.courseIntro}}
           </text>

@@ -111,9 +111,9 @@ Page({
 
   },
   // 输入邀请码搜索课程
-  search() {
-    console.log(999)
-  },
+  // search() {
+  //   console.log(999)
+  // },
   //获取搜索框输入的内容
   searchCourseName(e) {
     console.log(e.detail.value)
@@ -170,7 +170,7 @@ Page({
           type: 'success'
         });
         wx.setStorageSync('first_flag', false)
-        wx.setStorageSync('studentNum', that.data.studentNum)
+        if (that.data.studentNum) wx.setStorageSync('studentNum', that.data.studentNum)
         let newList = [];
         newList = this.data.courseList.concat(newList);
         newList[that.data.index].selected = true;

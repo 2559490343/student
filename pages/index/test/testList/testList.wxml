@@ -6,10 +6,10 @@
       <view class="fill">
         <view class="choice" wx:if="{{item.titleType=='选择题'}}">
           <radio-group bindchange="getChoAnswer" data-index="{{index}}" data-answer="{{item.titleAnswer}}">
-            <radio class="" value="A" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
-            <radio class="" value="B" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
-            <radio class="" value="C" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
-            <radio class="" value="D" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
+            <radio class="" value="A" color="#0599df" wx:if="{{item.titleA}}" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
+            <radio class="" value="B" color="#0599df" wx:if="{{item.titleB}}" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
+            <radio class="" value="C" color="#0599df" wx:if="{{item.titleC}}" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
+            <radio class="" value="D" wx:if="{{item.titleD}}" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
           </radio-group>
         </view>
         <view class="judge" wx:if="{{item.titleType=='判断题'}}">

@@ -67,7 +67,7 @@ Page({
   getGradeInfo() {
     let that = this;
     let obj = {
-      studentId: app.globalData.studentId
+      studentId: app.globalData.studentId || wx.getStorageSync('studentId')
     }
     app.globalData.api.default.getGradeInfo(obj).then(res => {
       console.log(res)

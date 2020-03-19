@@ -6,11 +6,11 @@
       <view class="topic">{{index+1}}. {{item.titleName}}</view>
       <view class="fill">
         <view class="choice" wx:if="{{item.titleType=='选择题'}}">
-          <radio-group bindchange="getChoAnswer" data-index="{{index}}">
-            <radio disabled class="" value="A" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
-            <radio disabled class="" value="B" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
-            <radio disabled class="" value="C" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
-            <radio disabled class="" value="D" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
+          <radio-group data-index="{{index}}">
+            <radio disabled class="" value="A" color="#0599df" wx:if="{{item.titleA}}" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
+            <radio disabled class="" value="B" color="#0599df" wx:if="{{item.titleB}}" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
+            <radio disabled class="" value="C" color="#0599df" wx:if="{{item.titleC}}" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
+            <radio disabled class="" value="D" color="#0599df" wx:if="{{item.titleD}}" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
           </radio-group>
           <view class="rightAnswer">
             正确答案：{{item.titleAnswer}} (
@@ -19,7 +19,7 @@
           </view>
         </view>
         <view class="judge" wx:if="{{item.titleType=='判断题'}}">
-          <radio-group bindchange="getJudAnswer" data-index="{{index}}">
+          <radio-group data-index="{{index}}">
             <radio class="" disabled value="1" color="#0599df" checked="{{item.answer=='1'}}">对</radio>
             <radio class="" disabled value="0" color="#0599df" checked="{{item.answer=='0'}}">错</radio>
           </radio-group>
@@ -30,7 +30,8 @@
           </view>
         </view>
         <view class="essay" wx:if="{{item.titleType=='简答题'}}">
-          <textarea class="" disabled value="{{item.answer}}" bindinput="getEssAnswer" data-index="{{index}}" maxlength="140"></textarea>
+          <textarea class="" disabled value="{{item.answer}}" 
+          data-index="{{index}}" maxlength="140"></textarea>
           <view class="rightAnswer">
             <view wx:if="{{item.titleTrue}}">
               (

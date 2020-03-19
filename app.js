@@ -1,7 +1,8 @@
 //app.js
 App({
   onLaunch: function() {
-    //调用登录接口拿openId
+    //调用小程序登录接口拿openId
+    let that = this;
     wx.login({
       success: function(res) {
         // 拿到登录code
@@ -17,20 +18,20 @@ App({
             grant_type: 'authorization_code'
           },
           success(res) {
-            // console.log(res.data.openid)
+            console.log('app')
             let openId = res.data.openid;
-            wx.setStorage({
-              key: 'openId',
-              data: openId,
-            })
+            that.globalData.openId = openId
+            wx.setStorageSync('openId', openId)
+            //由于这里是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+            if (that.openIdCallback) {
+              that.openIdCallback(openId);
+            }
           }
         })
 
       }
     })
-  
-
-
   },
   getUserInfo: function(cb) {
     var that = this
@@ -53,7 +54,7 @@ App({
               grant_type: 'authorization_code'
             },
             success(res) {
-              console.log(res.data.openid)
+              // console.log(res.data.openid)
               let openId = res.data.openid;
               wx.setStorage({
                 key: 'openId',
@@ -67,6 +68,7 @@ App({
     }
   },
   globalData: {
+    openId: '',
     userInfo: null,
     hasBind: false,
     homeCounts: {},

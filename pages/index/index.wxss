@@ -62,7 +62,12 @@ page {
   position: absolute;
   top: 80rpx;
   left: 0;
-  display: none;
+  /* display: none; */
+}
+
+.change_list_area {
+  overflow: scroll;
+  max-height: 400rpx;
 }
 
 .change_item {
@@ -103,10 +108,6 @@ page {
   background: #0599df;
   color: #fff;
   border: 0;
-}
-
-.show {
-  display: block;
 }
 
 .main_box {

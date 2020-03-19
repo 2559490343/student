@@ -84,9 +84,18 @@ Page({
   },
   submit() { //提交并且保存作业
 
-    //请求
-
-    console.log(this.data.answerList)
+    let finishCounts = 0;
+    this.data.answerList.forEach(item => {
+      if (typeof(item.titleTrue) == 'undefined') finishCounts++
+    })
+    console.log(finishCounts)
+    if (finishCounts > 0) {
+      wx.showToast({
+        title: `您还有${finishCounts}道题未完成!`,
+        icon: 'none'
+      })
+      return
+    }
     app.globalData.api.default.submitHomeWork(this.data.answerList).then(res => {
       console.log(res)
       if (res.data.code !== 0) return
@@ -181,17 +190,22 @@ Page({
   },
   getEssAnswer(e) { //获取简答题的答案
     this.data.answerList[e.target.dataset.index].titleAnswer = e.detail.value
-    this.data.answerList[e.target.dataset.index].titleTrue = ''
+    if (!e.detail.value) this.data.answerList[e.target.dataset.index].titleTrue = undefined
+    else this.data.answerList[e.target.dataset.index].titleTrue = ''
   },
   getFillAnswer(e) { //获取填空题的答案
     this.data.answerList[e.target.dataset.index].titleAnswer = e.detail.value
     this.data.answer[e.target.dataset.index] = e.detail.value;
-    if (e.target.dataset.answer == e.detail.value) {
-      this.data.answerList[e.target.dataset.index].titleTrue = 'true'
-    } else {
-      this.data.answerList[e.target.dataset.index].titleTrue = 'false'
+    if (!e.detail.value) this.data.answerList[e.target.dataset.index].titleTrue = undefined
+    else {
+      if (e.target.dataset.answer == e.detail.value) {
+        this.data.answerList[e.target.dataset.index].titleTrue = 'true'
+      } else {
+        this.data.answerList[e.target.dataset.index].titleTrue = 'false'
+      }
     }
-    console.log(e.target.dataset.answer, e.detail.value)
+
+    // console.log(e.target.dataset.answer, e.detail.value)
   },
   // 获取作业内容
   getHomeWorkDetail(id) {

@@ -11,6 +11,7 @@ Page({
    */
   data: {
     tabIndex: 0,
+    signIndex: null,
     ingList: {},
     hisList: [],
     courseName: '',
@@ -105,6 +106,16 @@ Page({
     this.setData({
       visible: true
     })
+    this.data.signIndex = null
+  },
+  showSignModal1(e) {
+    let index = e.currentTarget.dataset.index
+    let sign = this.data.hisList[index]
+    this.setData({
+      visible: true
+    })
+    this.data.ingList = sign
+    this.data.signIndex = index
   },
   getSigning() {
     let that = this;
@@ -152,7 +163,7 @@ Page({
       });
     } else {
       let studentStatus = '';
-      console.log(this.data.signCode,this.data.ingList.sign)
+      console.log(this.data.signCode, this.data.ingList.sign)
       if (this.data.signCode == this.data.ingList.sign.code) {
         let nowTime = new Date().getTime();
         let lateTime = Date.parse(this.data.ingList.sign.lateTime) - 8 * 60 * 60 * 1000;
@@ -182,7 +193,9 @@ Page({
             content: '签到成功！',
             type: 'success'
           });
-          this.getSigning()
+          console.log(this.data.signIndex)
+          if (this.data.signIndex == null) this.getSigning()
+          else this.getHisSign()
         })
       } else {
         $Toast({

@@ -10,8 +10,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-    hasBind: false,
     num: '',
     name: '',
     flag: false,
@@ -27,15 +25,28 @@ Page({
         color: '#ff9900'
       },
     ],
-    first_flag: null
+    first_flag: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-
+    if (app.globalData.openId && app.globalData.openId != '') {　　
+      //执行操作
+      this.handleLoad()　　　　　
+    } else {　　　　　　
+      //由于请求是网络请求，可能会在Page.onLoad后才返回　
+      //所以加入callback 防止这种情况　　　
+      app.openIdCallback = openId => {　　　　　　　　
+        if (openId != '') {　　　
+          this.handleLoad()　　　　　　
+        }　　　　　　
+      }
+    }
+  },
+  // 页面加载执行函数
+  handleLoad() {
     var that = this;
     let first_flag = wx.getStorageSync('first_flag') || null;
     if (first_flag === null || first_flag == true) {
@@ -44,17 +55,17 @@ Page({
           if (!res.authSetting['scope.userInfo']) {
             console.log('未授权')
             wx.setStorageSync('first_flag', true)
+            wx.hideTabBar()
             that.setData({
               first_flag: true
             })
-            wx.hideTabBar()
           } else {
             console.log('已授权')
             if (!wx.getStorageSync('studentNum')) {
+              wx.hideTabBar()
               that.setData({
                 first_flag: true
               })
-              wx.hideTabBar()
             } else {
               wx.setStorageSync('first_flag', false)
               wx.showTabBar()
@@ -82,7 +93,7 @@ Page({
                 let info = res.data.data || {}
                 app.globalData.studentNum = info.studentNum;
                 app.globalData.studentId = info.studentId;
-                // app.globalData.studentId = 1;
+                wx.setStorageSync('studentId', info.studentId)
                 app.globalData.studentName = info.studentName;
                 $Toast({
                   content: `${info.studentName}同学，欢迎您！`,
@@ -99,16 +110,12 @@ Page({
       that.setData({
         first_flag: first_flag
       }, () => {
-        console.log('对对对登录')
-
-        if (!that.data.first_flag) {
-          console.log('已登录')
-        }
+        // console.log('对对对登录')
+        // if (!that.data.first_flag) {
+        //   console.log('已登录')
+        // }
       })
     }
-
-
-
   },
   // 获取学生课程列表
   getCourseList() {
@@ -220,6 +227,9 @@ Page({
   },
   // 显示切换课程
   showChange() {
+    // if (this.data.flag == false) {
+    //   this.getCourseList()
+    // }
     this.setData({
       flag: !this.data.flag
     })
@@ -227,8 +237,10 @@ Page({
   // 切换课程
   handleChange(e) {
     console.log(e)
+    let index = e.currentTarget.dataset.index
+    if (index == this.data.change_index) return
     this.setData({
-      change_index: e.currentTarget.dataset.index
+      change_index: index
     })
   },
   // 取消切换课程
@@ -236,15 +248,13 @@ Page({
     this.setData({
       flag: false
     })
-    console.log(app.globalData.courseId)
   },
   // 确定切换课程
   handleChangeCourse() {
-    if(!this.data.change_course_list.length) {
+    if (!this.data.change_course_list.length) {
       this.setData({
         flag: false
       })
-      // app.globalData.courseId = '11'
       return
     }
     this.setData({
@@ -260,9 +270,10 @@ Page({
   },
   toSelection(e) {
     // 判断是否选择了当前课程，如果没选则不跳转(跳转选课页面除外)
-    if (this.isSelectCourse() || e.currentTarget.dataset.index == '1') {
+    if (app.globalData.courseId || e.currentTarget.dataset.index == '1') {
+      let url = e.currentTarget.dataset.url
       wx.navigateTo({
-        url: e.currentTarget.dataset.url,
+        url: url,
       })
     } else {
       this.setData({
@@ -272,10 +283,10 @@ Page({
 
   },
   // 判断是否选择了当前课程
-  isSelectCourse() {
-    if (!app.globalData.courseId) return false
-    else return true
-  },
+  // isSelectCourse() {
+  //   if (!app.globalData.courseId) return false
+  //   else return true
+  // },
   hideDialog() {
     this.setData({
       visible: false,

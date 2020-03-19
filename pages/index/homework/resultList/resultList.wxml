@@ -7,10 +7,10 @@
       <view class="fill">
         <view class="choice" wx:if="{{item.titleType=='选择题'}}">
           <radio-group bindchange="getChoAnswer" data-index="{{index}}">
-            <radio disabled class="" value="A" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
-            <radio disabled class="" value="B" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
-            <radio disabled class="" value="C" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
-            <radio disabled class="" value="D" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
+            <radio disabled class="" value="A" wx:if="{{item.titleA}}" color="#0599df" checked="{{item.answer=='A'}}">A、{{item.titleA}}</radio>
+            <radio disabled class="" value="B" wx:if="{{item.titleB}}" color="#0599df" checked="{{item.answer=='B'}}">B、{{item.titleB}}</radio>
+            <radio disabled class="" value="C" wx:if="{{item.titleC}}" color="#0599df" checked="{{item.answer=='C'}}">C、{{item.titleC}}</radio>
+            <radio disabled class="" value="D" wx:if="{{item.titleD}}" color="#0599df" checked="{{item.answer=='D'}}">D、{{item.titleD}}</radio>
           </radio-group>
           <view class="rightAnswer">
             正确答案：{{item.titleAnswer}} (

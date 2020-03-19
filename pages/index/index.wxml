@@ -2,65 +2,63 @@
 <view class="main">
   <view class="change_course">
     <view class="change_area">
-      <text bindtap="showChange">当前课程: {{courseName||'待切换'}}
+      <text catch:tap="showChange">当前课程: {{courseName||'待切换'}}
       </text>
-      <!-- <button bindtap="login1">111</button>
-      <button bindtap="login2">222</button> -->
-      <i-icon type="play_fill" size="16" bindtap="showChange" class="icon {{flag?'down':''}}" color="#ffffff" />
+      <i-icon type="play_fill" size="16" catch:tap="showChange" class="icon {{flag?'down':''}}" color="#ffffff" />
     </view>
-    <view class="change_list {{flag?'show':''}}">
-      <view wx:if='{{change_course_list.length>0}}'>
-        <view class="change_item" wx:for='{{change_course_list}}' wx:key='item.id' bindtap="handleChange" data-index="{{index}}">
-          <text>{{item.courseName}} </text>
+    <view class="change_list" wx:if="{{flag}}">
+      <view class="change_list_area" wx:if='{{change_course_list.length>0}}'>
+        <view class="change_item" wx:for='{{change_course_list}}' wx:key='item.courseId' catch:tap="handleChange" data-index="{{index}}">
+          <text>课程名：{{item.courseName}}  老师：{{item.teacher.teacherName}}</text>
           <icon type="success_no_circle" color="#0599df" wx:if="{{index==change_index}}"></icon>
         </view>
       </view>
-      <view wx:else>暂无课程</view>
+      <view wx:else style="padding-left:60rpx">暂无课程</view>
       <view class="change_btns">
-        <view class="btn" bindtap="handleCancelChange">取消</view>
-        <view class="btn" bindtap="handleChangeCourse">确定</view>
+        <view class="btn" catch:tap="handleCancelChange">取消</view>
+        <view class="btn" catch:tap="handleChangeCourse">确定</view>
       </view>
     </view>
 
   </view>
   <view class="main_box">
     <view class="selection box">
-      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/selection/selection" data-index='1'>
+      <view class="sign_inner" catch:tap="toSelection" data-url="/pages/index/selection/selection" data-index='1'>
         <view class="sign_txt">
-          <text selectable="false" space="false" decode="false">选课操作</text>
+          <text>选课操作</text>
         </view>
         <view class="sign_logo">
-          <image src="/images/selection.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+          <image src="/images/selection.png"></image>
         </view>
       </view>
     </view>
     <view class="sign box">
-      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/sign/sign">
+      <view class="sign_inner" catch:tap="toSelection" data-url="/pages/index/sign/sign">
         <view class="sign_txt">
-          <text selectable="false" space="false" decode="false">课程签到</text>
+          <text>课程签到</text>
         </view>
         <view class="sign_logo">
-          <image src="/images/sign.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+          <image src="/images/sign.png"></image>
         </view>
       </view>
     </view>
     <view class="test box">
-      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/test/test">
+      <view class="sign_inner" catch:tap="toSelection" data-url="/pages/index/test/test">
         <view class="sign_txt">
-          <text selectable="false" space="false" decode="false">课堂测试</text>
+          <text>课堂测试</text>
         </view>
         <view class="sign_logo">
-          <image src="/images/test.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+          <image src="/images/test.png"></image>
         </view>
       </view>
     </view>
     <view class="homework box">
-      <view class="sign_inner" bindtap="toSelection" data-url="/pages/index/homework/homework">
+      <view class="sign_inner" catch:tap="toSelection" data-url="/pages/index/homework/homework">
         <view class="sign_txt">
-          <text selectable="false" space="false" decode="false">课后作业</text>
+          <text>课后作业</text>
         </view>
         <view class="sign_logo">
-          <image src="/images/homework.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+          <image src="/images/homework.png"></image>
         </view>
       </view>
     </view>
